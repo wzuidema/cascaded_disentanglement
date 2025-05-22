@@ -1,6 +1,7 @@
 # Disentangling Textual and Acoustic Features of Neural Speech Representations
 
-This official repository contains the code and the model checkpoints for the paper _"Disentangling Textual and Acoustic Features of Neural Speech Representations"_. It proposes a disentanglement framework based on the Information Bottleneck principle, which effectively separates entangled representations of neural speech models into distinct textual and acoustic components. The framework retains only the features relevant to target tasks, improving interpretability while maintaining the model's original performance. The framework is also proving useful in providing a route to perform _disentangled feature attribution_, revealing the most significant speech frame representations from both textual and acoustic perspectives.
+This repository contains the code and the model checkpoints for the paper _"Posthoc Disentanglement of Textual and Acoustic Features
+in Self-Supervised Speech Encoders"_. It proposes a posthoc, cascaded disentanglement framework, that makes use of the Information Bottleneck principle, and which effectively separates entangled representations of neural speech models into distinct textual and acoustic components. The framework retains only the features relevant to target tasks, improving interpretability while maintaining the model's original performance. The framework is also proving useful in providing a route to perform _disentangled feature attribution_, revealing the most significant speech frame representations from both textual and acoustic perspectives.
 
 📃[[Paper]](https://arxiv.org/abs/2410.03037)
 
@@ -17,6 +18,13 @@ This official repository contains the code and the model checkpoints for the pap
 - The attention layer in stage 2 of our framework can be used to identify those frames in the original audio input whose latent representations contribute most to our target tasks. Crucially, the disentanglement mechanism allows us to clearly separate the contributions of acoustic features from those of textual features, providing insight into their individual roles. 
 
 ## Reproducibility
+
+### Dataset preparations
+The datasets needed to reproduce our work are mostly available on huggingface. To download and prepare the datasets, use the 'preprocessing/dataset_generation.py' script with the following command (but check whether you have enough disk space; e.g. >100Gb for librispeech, and comment-out the sections you do not need):
+```
+python preprocessing/dataset_generation.py
+```
+
 ### Training
 To start the training process, use the `vib/training.py` script with the following command:: 
 ```
